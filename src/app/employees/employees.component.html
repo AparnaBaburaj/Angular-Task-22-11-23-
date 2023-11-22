@@ -1,0 +1,34 @@
+<div class="bx-emp">
+ 
+    <ul [ngSwitch]="logName">
+       
+            <p *ngSwitchCase="'user'">User logged in..</p>
+       
+      
+            <p *ngSwitchCase="'admin'">Admin logged in..</p>
+ 
+            <p *ngSwitchDefault>Please choose a login</p>
+     
+
+    </ul>
+    <div class="bx-emp1">
+    <h1 [ngClass]="{'first-heading':true}">EMPLOYEE DETAILS</h1>
+    <p [ngStyle]="{'color':'white','font-size':'18px','font-family':'Times New Roman'}">If you want to see the details/change the style, click here</p>
+        <button (click)="toggleTable()">Employee Details</button>
+        <button (click)="changeColumnStyle()">Change Column Style</button>
+    </div>
+        <table *ngIf="showTable" class="table">
+          <thead>
+            <tr>
+              <th *ngFor="let emp of employees" [style.background-color]="emp.style">{{ emp.name }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of data">
+              <td *ngFor="let emp of employees" [style.background-color]="emp.style">{{ row[emp.key] }}</td>
+            </tr>
+          </tbody>
+        </table>
+       
+      </div>
+    
